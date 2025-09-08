@@ -1,13 +1,13 @@
 # Agenda – Project 3-1 – AY 2025–2026
 
 **Date of the meeting:** 09/09/2025  
-**Group Numbers:** Project 31  
+**Group Numbers:** 08 
 **Group Members:**  
 - Noam Favier  
 - Daan Vankan  
 - Alexandros Ntoouz/Dawes  
 - Anne  
-- Evi  
+- Evi Levels  
 - Paul Elfering  
 - Vladislav Snytko
 
@@ -33,7 +33,7 @@ We’ve initiated team communication, reviewed the general project description, 
 - **Daan Vankan**: To be defined at meeting.  
 - **Alexandros Ntoouz/Dawes**: To be defined at meeting.  
 - **Anne**: To be defined at meeting.  
-- **Evi**: To be defined at meeting.
+- **Evi Levels**: To be defined at meeting.
 
 ---
 
