@@ -33,7 +33,7 @@ We’ve initiated team communication, reviewed the general project description, 
 - **Vladislav Snytko**: Identify open questions for the tutor, explore prior EDMO robot data and video processing options.
 - **Daan Vankan**: To be defined at meeting.
 - **Alexandros Ntoouz/Dawes**: To be defined at meeting.
-- **Anne**: To be defined at meeting.
+- **Anne Katarina Zambare**: To be defined at meeting.
 - **Evi Levels**: To be defined at meeting.
 
 ---
