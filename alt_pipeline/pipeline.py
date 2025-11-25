@@ -8,7 +8,7 @@ import json
 from utils import (
     cleanup_services, signal_handler,
     extract_audio_features, find_session_directories,
-    extract_audio_segment, extract_robot_data_features
+    extract_audio_segment, extract_robot_data_features, compute_robot_winning_rate
 )
 
 
@@ -65,7 +65,21 @@ def main():
         
         # Extract audio features
         audio_path = f"{dir}/Audio/processed/{args.default_video_name}.wav"
+        video_path = f"{dir}/Videos/{args.default_video_name}.mp4"
         audio_features = extract_audio_features(audio_path, args.window_len, args.output, args.asr_diar_file)
+        robot_speed_features = []
+
+        for w in audio_features:
+            res = compute_robot_winning_rate(video_path, w["window_start"], w["window_end"])
+            robot_speed_features.append({
+                "window_index": w["window_index"],
+                "window_start": w["window_start"],
+                "window_end": w["window_end"],
+                "avg_speed_cm_s": res.get("avg_speed_cm_s"),
+                "num_detections": res.get("num_detections"),
+                "winning_rate": res.get("winning_rate")
+            })
+
         
         # Save results
         dir_name = Path(dir).stem
@@ -77,7 +91,8 @@ def main():
                 'base_window_length': args.window_len,
                 'num_windows': len(audio_features),
                 'audio_features': audio_features,
-                'robot_data_features': robot_data_features
+                'robot_data_features': robot_data_features,
+                'robot_speed_features': robot_speed_features
             }, f, indent=2)
         
         print(f"✓ Completed {dir_name} -> {output_file}")

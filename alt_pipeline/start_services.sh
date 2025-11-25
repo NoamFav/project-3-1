@@ -28,6 +28,9 @@ uvicorn src.python_services.nonverb_features.app:app --host 0.0.0.0 --port 8005 
 echo "Starting Robot Data service on port 8006..."
 uvicorn src.python_services.robot_data.app:app --host 0.0.0.0 --port 8006 &
 
+echo "Starting Robot Speed service on port 8007..."
+uvicorn src.python_services.robot_speed.app:app --host 0.0.0.0 --port 8007 &
+
 # Give services time to start
 sleep 10
 

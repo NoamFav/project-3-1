@@ -16,7 +16,8 @@ SERVICES = {
     'emotion': 'http://127.0.0.1:8003',
     'nlp': 'http://127.0.0.1:8004',
     'nonverb': 'http://127.0.0.1:8005',
-    'robot_data': 'http://127.0.0.1:8006'
+    'robot_data': 'http://127.0.0.1:8006',
+    'robot_speed': 'http://127.0.0.1:8007'
 }
 
 
@@ -285,6 +286,25 @@ def extract_audio_features(audio_path: str, window_len: int, output_dir: str, as
         current_position = actual_end_samples
     
     return all_features
+
+
+def compute_robot_winning_rate(video_path: str, window_start: float, window_end: float) -> dict:
+    """
+    Call the robot speed service to compute a winning rate
+    for the given time window in the video.
+    """
+    payload = {
+        "video_path": video_path,
+        "window_start": window_start,
+        "window_end": window_end,
+    }
+    response = requests.post(
+        f"{SERVICES['robot_speed']}/winning_rate",
+        json=payload,
+        timeout=60,
+    )
+    response.raise_for_status()
+    return response.json()
 
 def cleanup_services():
     """Shutdown all uvicorn services."""
